@@ -83,6 +83,63 @@
                 android:text="Perempuan" />
         </RadioGroup>
 
+        <TextView
+            android:id="@+id/textViewHobi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Hobi" />
+
+        <CheckBox
+            android:id="@+id/checkBoxMN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textViewHobi"
+            android:checked="false"
+            android:text="Membaca Novel" />
+
+        <CheckBox
+            android:id="@+id/checkBoxBR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/checkBoxBC"
+            android:checked="false"
+            android:text="Berenang" />
+
+        <CheckBox
+            android:id="@+id/checkBoxBG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/checkBoxOR"
+            android:checked="false"
+            android:text="Bermain Game" />
+
+        <CheckBox
+            android:id="@+id/checkBoxBS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/checkBoxGB"
+            android:checked="false"
+            android:text="Bersepeda" />
+
+        <CheckBox
+            android:id="@+id/checkBoxMF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/checkBoxNL"
+            android:checked="false"
+            android:text="Menonton Film" />
+
 
         <Button
             android:id="@+id/buttonOK"

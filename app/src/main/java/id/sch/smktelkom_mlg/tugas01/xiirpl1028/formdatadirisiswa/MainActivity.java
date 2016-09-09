@@ -4,20 +4,24 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
 
     EditText etNama;
     EditText etTahun;
     Button bOK;
-    TextView tvHasil;
+    TextView tvHasil, tvHobi;
     String hasil = "";
     RadioGroup rgGender;
+    CheckBox cbMN, cbBS, cbBR, cbBG, cbMF;
+    int nHobi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +33,18 @@ public class MainActivity extends AppCompatActivity {
         bOK = (Button) findViewById(R.id.buttonOK);
         rgGender = (RadioGroup) findViewById(R.id.RadioGroupGender);
         tvHasil = (TextView) findViewById(R.id.textViewHasil);
+        cbMN = (CheckBox) findViewById(R.id.checkBoxMN);
+        cbBS = (CheckBox) findViewById(R.id.checkBoxBS);
+        cbBR = (CheckBox) findViewById(R.id.checkBoxBR);
+        cbBG = (CheckBox) findViewById(R.id.checkBoxBG);
+        cbMF = (CheckBox) findViewById(R.id.checkBoxMF);
+        tvHobi = (TextView) findViewById(R.id.textViewHobi);
+
+        cbMN.setOnCheckedChangeListener(this);
+        cbBS.setOnCheckedChangeListener(this);
+        cbBR.setOnCheckedChangeListener(this);
+        cbBG.setOnCheckedChangeListener(this);
+        cbMF.setOnCheckedChangeListener(this);
 
         bOK.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,12 +52,27 @@ public class MainActivity extends AppCompatActivity {
 
                 NameYear();
                 Gender();
+                Hobi();
 
                 write();
 
             }
         });
 
+    }
+
+    private void Hobi() {
+        String hobi = "Hobi       :\n";
+        int startlen = hobi.length();
+        if (cbMN.isChecked()) hobi += "                " + cbMN.getText() + "\n";
+        if (cbBS.isChecked()) hobi += "                " + cbBS.getText() + "\n";
+        if (cbBR.isChecked()) hobi += "                " + cbBR.getText() + "\n";
+        if (cbBG.isChecked()) hobi += "                " + cbBG.getText() + "\n";
+        if (cbMF.isChecked()) hobi += "                " + cbMF.getText() + "\n";
+
+        if (hobi.length() == startlen) hobi = "Tidak ada pada pilihan hobi";
+
+        hasil += hobi + "\n";
     }
 
     private void write() {
@@ -58,10 +89,11 @@ public class MainActivity extends AppCompatActivity {
             gender = rb.getText().toString();
         }
         if (gender == null) {
-            hasil = "Data Belum Lengkap";
+            hasil += "Belum memilih gender";
         } else {
-            hasil += "Gender  : " + gender + "\n";
+            hasil += "Gender  : " + gender;
         }
+        hasil += "\n";
     }
 
     private void NameYear() {
@@ -69,9 +101,11 @@ public class MainActivity extends AppCompatActivity {
             String nama = etNama.getText().toString();
             int tahun = Integer.parseInt(etTahun.getText().toString());
             int usia = 2016 - tahun;
-            hasil += "Nama    : " + nama + "\nUmur     :  " + usia + " tahun\n";
-
+            hasil += "Nama    : " + nama + "\nUmur     :  " + usia + " tahun";
+        } else if (!isValid()) {
+            hasil += "Nama atau Tahun Kelahiran belum benar";
         }
+        hasil += "\n";
     }
 
     private boolean isValid() {
@@ -104,4 +138,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+        if (isChecked) nHobi += 1;
+        else nHobi -= 1;
+
+        tvHobi.setText("Hobi (" + nHobi + " terpilih)");
+    }
 }
