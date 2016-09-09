@@ -51,7 +51,21 @@
                 android:id="@+id/editTextTahun"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Tahun Kelahiran" />
+                android:hint="Tahun Kelahiran"
+                android:inputType="numberSigned" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/editTextNoHP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nomor HP"
+                android:inputType="numberSigned" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -140,6 +154,24 @@
             android:checked="false"
             android:text="Menonton Film" />
 
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Daerah Asal" />
+
+        <Spinner
+            android:id="@+id/spinnerProvinsi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/provinsi" />
+
+        <Spinner
+            android:id="@+id/spinnerKota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/buttonOK"
